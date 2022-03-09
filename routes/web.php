@@ -24,8 +24,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 
-route::controller(CategoryController::class)->prefix('')->group(function(){
-    route::get("/",'index');
+route::controller(CategoryController::class)->prefix('categories/')->group(function(){
+    route::get("/crear",[CategoryController::class,'create'])->name('categories.create');
+
+    route::post("/crear",[CategoryController::class,'store'])->name('categories.store');
 });
 
 

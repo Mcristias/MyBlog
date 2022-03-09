@@ -25,6 +25,7 @@ class CategoryController extends Controller
         //return $valdev;
 
         return view('WelcomeMyBlog',compact('categories'));
+
     }
 
     /**
@@ -34,7 +35,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('/profile/FormCategorias');
     }
 
     /**
@@ -45,7 +46,21 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //return $request->all();
+
+        if ($request->enabled == 'on') {
+            $boolean = 1;
+
+        } else {
+            $boolean = 0;
+        }
+        Category::create([
+
+            'name' => $request->category,
+            'enabled' => $boolean,
+
+        ]);
+
     }
 
     /**
